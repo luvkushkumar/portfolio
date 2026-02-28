@@ -737,9 +737,16 @@ window.addEventListener("scroll", () => {
 
 // Submit button
 document.getElementById("submit-btn").addEventListener("click", function() {
-  this.textContent = "Message Sent ✓";
-  this.style.background = "#3fb950";
-  setTimeout(() => { this.textContent = "Send Message →"; this.style.background = ""; }, 3000);
+  const name = document.querySelector('.f-input[placeholder="John"]').value + ' ' + document.querySelector('.f-input[placeholder="Doe"]').value;
+  const subject = document.querySelector('.f-input[placeholder="Job Opportunity / Collaboration"]').value || "Message from Portfolio";
+  const message = document.querySelector('.f-textarea').value;
+  const email = document.querySelector('.f-input[type="email"]').value;
+
+  const gmailUrl = "https://mail.google.com/mail/?view=cm&to=luvkushsharma1999@gmail.com"
+    + "&su=" + encodeURIComponent(subject)
+    + "&body=" + encodeURIComponent("From: " + name + "\nEmail: " + email + "\n\n" + message);
+
+  window.open(gmailUrl, "_blank");
 });
 </script>
 </body>
